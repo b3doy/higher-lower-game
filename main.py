@@ -7,12 +7,14 @@ from os import system
 def random_account():
     return random.choice(data)
 
+
 # Format account data into printable format.
 def format_data(question):
-    name = question['name']
-    desc = question['description']
-    country = question['country']
+    name = question["name"]
+    desc = question["description"]
+    country = question["country"]
     return f"{name}, a  {desc}, from {country}"
+
 
 # Check if user is correct.
 def check_answer(guess, question_a_followers, question_b_followers):
@@ -20,6 +22,7 @@ def check_answer(guess, question_a_followers, question_b_followers):
         return guess == "a"
     else:
         return guess == "b"
+
 
 # Ask user for a guess.
 def game():
@@ -29,7 +32,7 @@ def game():
     question_a = random_account()
     question_b = random_account()
 
-# Make game repeatable.
+    # Make game repeatable.
     while game_should_continue:
         question_a = question_b
         question_b = random_account()
@@ -41,16 +44,16 @@ def game():
         question_2 = "Against B: " + format_data(question_b)
         print(question_1)
         print(art.vs)
-        print(question_2) 
+        print(question_2)
         guess = input("Who has more followers? Type 'A' or 'B': ").lower()
 
         question_a_followers = question_a["follower_count"]
         question_b_followers = question_b["follower_count"]
         correct_answer = check_answer(guess, question_a_followers, question_b_followers)
 
-# Clear screen between rounds.
+        # Clear screen between rounds.
         system("clear")
-# Score Keeping.
+        # Score Keeping.
         print(art.logo)
         if correct_answer:
             score += 1
@@ -58,5 +61,6 @@ def game():
         else:
             game_should_continue = False
             print(f"Sorry, that's wrong. Final Score: {score}")
-game()        
 
+
+game()
