@@ -1,5 +1,3 @@
-import imp
-from re import A
 import art
 from game_data import data
 import random
